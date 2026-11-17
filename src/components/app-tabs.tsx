@@ -1,5 +1,5 @@
 import { NativeTabs } from 'expo-router/native-tabs';
-import { useColorScheme } from 'react-native';
+import { useColorScheme } from '@/hooks/use-color-scheme';
 
 import { Colors } from '@/constants/theme';
 
@@ -20,12 +20,14 @@ export default function AppTabs() {
         />
       </NativeTabs.Trigger>
 
-      <NativeTabs.Trigger name="explore">
-        <NativeTabs.Trigger.Label>Explore</NativeTabs.Trigger.Label>
-        <NativeTabs.Trigger.Icon
-          src={require('@/assets/images/tabIcons/explore.png')}
-          renderingMode="template"
-        />
+      <NativeTabs.Trigger name="datamahasiswa">
+        <NativeTabs.Trigger.Label>Mahasiswa</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon sf="graduationcap.fill" md="school" />
+      </NativeTabs.Trigger>
+
+      <NativeTabs.Trigger name="tambahdata">
+        <NativeTabs.Trigger.Label>Tambah Data</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon sf="plus.circle.fill" md="add_circle" />
       </NativeTabs.Trigger>
     </NativeTabs>
   );

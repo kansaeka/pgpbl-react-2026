@@ -2,6 +2,8 @@ import { Image } from 'expo-image';
 import { StyleSheet, View } from 'react-native';
 import Animated, { Keyframe, Easing } from 'react-native-reanimated';
 
+import { useHasHydrated } from '@/hooks/use-has-hydrated';
+
 import classes from './animated-icon.module.css';
 const DURATION = 300;
 
@@ -55,6 +57,11 @@ const glowKeyframe = new Keyframe({
 });
 
 export function AnimatedIcon() {
+  const hasHydrated = useHasHydrated();
+  // Animasi entering reanimated menghasilkan style berbeda di server vs client
+  // (hydration mismatch), jadi dirender hanya setelah hydration selesai.
+  if (!hasHydrated) return <View style={styles.iconContainer} />;
+
   return (
     <View style={styles.iconContainer}>
       <Animated.View entering={glowKeyframe.duration(60 * 1000 * 4)} style={styles.glow}>
@@ -66,7 +73,7 @@ export function AnimatedIcon() {
       </Animated.View>
 
       <Animated.View style={styles.imageContainer} entering={logoKeyframe.duration(DURATION)}>
-        <Image style={styles.image} source={require('@/assets/images/expo-logo.png')} />
+        <Image style={styles.image} source={require('@/assets/images/embege.png')} />
       </Animated.View>
     </View>
   );
@@ -97,8 +104,8 @@ const styles = StyleSheet.create({
   },
   image: {
     position: 'absolute',
-    width: 76,
-    height: 71,
+    width: 100,
+    height: 96,
   },
   background: {
     width: 128,

@@ -35,23 +35,26 @@ export default function HomeScreen() {
         <ThemedView style={styles.heroSection}>
           <AnimatedIcon />
           <ThemedText type="title" style={styles.title}>
-            Welcome to&nbsp;Expo
+            PGPBL {'\n'} React Native 2026
           </ThemedText>
         </ThemedView>
 
         <ThemedText type="code" style={styles.code}>
-          get started
+          PROFIL
         </ThemedText>
 
         <ThemedView type="backgroundElement" style={styles.stepContainer}>
           <HintRow
-            title="Try editing"
-            hint={<ThemedText type="code">src/app/index.tsx</ThemedText>}
+            title="Nama"
+            hint={<ThemedText type="code">Khansa Eka Maulana</ThemedText>}
           />
-          <HintRow title="Dev tools" hint={getDevMenuHint()} />
           <HintRow
-            title="Fresh start"
-            hint={<ThemedText type="code">npm run reset-project</ThemedText>}
+           title="NIM" 
+           hint={<ThemedText type="code">24/540025/SV/24752</ThemedText>}
+          />
+          <HintRow
+            title="Kelas"
+            hint={<ThemedText type="code">PGPBL-B</ThemedText>}
           />
         </ThemedView>
 

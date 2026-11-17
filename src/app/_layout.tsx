@@ -1,18 +1,25 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from 'expo-router';
+import { DarkTheme, DefaultTheme, Stack, ThemeProvider } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
-import { useColorScheme } from 'react-native';
+import { useColorScheme } from '@/hooks/use-color-scheme';
 
 import { AnimatedSplashOverlay } from '@/components/animated-icon';
-import AppTabs from '@/components/app-tabs';
+import { MahasiswaProvider } from '@/context/mahasiswa-context';
 
 SplashScreen.preventAutoHideAsync();
 
-export default function TabLayout() {
+export default function RootLayout() {
   const colorScheme = useColorScheme();
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <AnimatedSplashOverlay />
-      <AppTabs />
+      <MahasiswaProvider>
+        <AnimatedSplashOverlay />
+        <Stack>
+          {/* Grup (tabs) berisi bottom tabs, tanpa header Stack */}
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          {/* Halaman anak: header dengan tombol back otomatis */}
+          <Stack.Screen name="forminput" options={{ title: 'Form Input' }} />
+        </Stack>
+      </MahasiswaProvider>
     </ThemeProvider>
   );
 }
